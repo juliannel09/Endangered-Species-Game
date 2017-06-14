@@ -1,22 +1,29 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://background/bg.gd" type="Script" id=1]
 [ext_resource path="res://background/Backdrop copy.tex" type="Texture" id=2]
 [ext_resource path="res://background/New Piskel (3).tex" type="Texture" id=3]
-[ext_resource path="res://background/sprite_rhino0.tex" type="Texture" id=4]
-[ext_resource path="res://background/sprite_rhino1.tex" type="Texture" id=5]
-[ext_resource path="res://background/sprite_rhino2.tex" type="Texture" id=6]
-[ext_resource path="res://background/sprite_rhino3.tex" type="Texture" id=7]
-[ext_resource path="res://background/sprite_rhino4.tex" type="Texture" id=8]
-[ext_resource path="res://background/sprite_rhino5.tex" type="Texture" id=9]
-[ext_resource path="res://background/sprite_rhino6.tex" type="Texture" id=10]
-[ext_resource path="res://background/sprite_rhino7.tex" type="Texture" id=11]
-[ext_resource path="res://background/animated_rhino.gd" type="Script" id=12]
+[ext_resource path="res://background/kinBody2D_rhino.gd" type="Script" id=4]
+[ext_resource path="res://background/sprite_rhino0.tex" type="Texture" id=5]
+[ext_resource path="res://background/sprite_rhino1.tex" type="Texture" id=6]
+[ext_resource path="res://background/sprite_rhino2.tex" type="Texture" id=7]
+[ext_resource path="res://background/sprite_rhino3.tex" type="Texture" id=8]
+[ext_resource path="res://background/sprite_rhino4.tex" type="Texture" id=9]
+[ext_resource path="res://background/sprite_rhino5.tex" type="Texture" id=10]
+[ext_resource path="res://background/sprite_rhino6.tex" type="Texture" id=11]
+[ext_resource path="res://background/sprite_rhino7.tex" type="Texture" id=12]
+[ext_resource path="res://background/animated_rhino.gd" type="Script" id=13]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 65.0
+height = 340.0
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
@@ -61,14 +68,29 @@ texture = ExtResource( 3 )
 centered = false
 region_rect = Rect2( 540, 960, 0, 0 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="kinBody2D_rhino" type="KinematicBody2D" parent="."]
 
-transform/pos = Vector2( 238.405, 1223 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 4 )
+
+[node name="rhino" type="AnimatedSprite" parent="kinBody2D_rhino"]
+
 transform/scale = Vector2( 0.143519, 0.188413 )
 frames = SubResource( 1 )
 animation = "default"
 frame = 1
-centered = false
-script/script = ExtResource( 12 )
+script/script = ExtResource( 13 )
+
+[node name="collisionShape2D_rhino" type="CollisionShape2D" parent="kinBody2D_rhino"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
 
 
