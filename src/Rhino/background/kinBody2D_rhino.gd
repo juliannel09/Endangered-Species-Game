@@ -45,7 +45,8 @@ func _fixed_process(delta):
 			move_to(Vector2(get_pos().x, get_viewport().get_rect().size.y - rhinoPadY))
 			
 		if get_node(".").is_colliding():
-			get_collider().add_collision_exception_with(get_node("."))
+			Globals.set("health", Globals.get("health") + get_collider().points)
+			get_collider().queue_free()
 			
 		if Globals.get("health")<=0:
 			kinSpeed = Vector2(0, 0)
