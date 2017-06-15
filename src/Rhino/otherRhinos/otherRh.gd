@@ -14,5 +14,3 @@ func _process(delta):
 			self.set_frame(get_frame() + 1)
 		
 		timeElapsed = 0
-	
-	#print(str(get_frame() + 1))

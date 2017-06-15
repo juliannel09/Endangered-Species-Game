@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=1]
+
+[ext_resource path="res://otherRhinos/otherRhi_move.gd" type="Script" id=1]
+[ext_resource path="res://otherRhinos/sprite_rhino0.tex" type="Texture" id=2]
+[ext_resource path="res://otherRhinos/sprite_rhino1.tex" type="Texture" id=3]
+[ext_resource path="res://otherRhinos/sprite_rhino2.tex" type="Texture" id=4]
+[ext_resource path="res://otherRhinos/sprite_rhino3.tex" type="Texture" id=5]
+[ext_resource path="res://otherRhinos/sprite_rhino4.tex" type="Texture" id=6]
+[ext_resource path="res://otherRhinos/sprite_rhino5.tex" type="Texture" id=7]
+[ext_resource path="res://otherRhinos/sprite_rhino6.tex" type="Texture" id=8]
+[ext_resource path="res://otherRhinos/sprite_rhino7.tex" type="Texture" id=9]
+[ext_resource path="res://otherRhinos/otherRh.gd" type="Script" id=10]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 60.0
+height = 300.0
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="otherRhino_root" type="Node"]
+
+[node name="rigidBody_otherRhino" type="RigidBody2D" parent="."]
+
+transform/pos = Vector2( 536.814, -411.244 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -30.9084 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 1
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+script/script = ExtResource( 1 )
+
+[node name="otherRhino" type="AnimatedSprite" parent="rigidBody_otherRhino"]
+
+transform/scale = Vector2( 0.138532, 0.159113 )
+frames = SubResource( 1 )
+animation = "default"
+script/script = ExtResource( 10 )
+
+[node name="collisionOtherRhino" type="CollisionShape2D" parent="rigidBody_otherRhino"]
+
+transform/pos = Vector2( 0, -30.9084 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+

@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-var gameRun = false
 var maxSpeed = 300
 var accel = 20
 var kinSpeed = Vector2(0, 0)
@@ -12,7 +11,7 @@ func _ready():
 	get_node(".").move_to(Vector2(540, 1450))
 	
 func _fixed_process(delta):
-	if gameRun:
+	if Globals.get("gameRun_rh")==true:
 		if (Input.is_action_pressed("ui_up")) or (Input.is_action_pressed("ui_down")) or (Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_right")):
 			if (Input.is_action_pressed("ui_up")):
 				if kinSpeed.y > -maxSpeed:
@@ -38,18 +37,20 @@ func _fixed_process(delta):
 		if (get_pos().x>get_viewport().get_rect().size.x - rhinoPadX):
 			kinSpeed.x = 0
 			move_to(Vector2(get_viewport().get_rect().size.x - rhinoPadX, get_pos().y))
-		if (get_pos().y<rhinoPadY):
+		if (get_pos().y<(rhinoPadY + 0.5*(get_viewport().get_rect().size.y))):
 			kinSpeed.y = 0
-			move_to(Vector2(get_pos().x, rhinoPadY))
+			move_to(Vector2(get_pos().x, rhinoPadY + 0.5*(get_viewport().get_rect().size.y)))
 		if (get_pos().y>get_viewport().get_rect().size.y - rhinoPadY):
 			kinSpeed.y = 0
 			move_to(Vector2(get_pos().x, get_viewport().get_rect().size.y - rhinoPadY))
 			
-		if Input.is_action_pressed("ui_cancel"):
+		if get_node(".").is_colliding():
+			get_collider().add_collision_exception_with(get_node("."))
+			
+		if Globals.get("health")<=0:
 			kinSpeed = Vector2(0, 0)
-			gameRun = false
-		
+			Globals.set("gameRun_rh", false)
+			
 	else:
+		kinSpeed = Vector2(0, 0)
 		get_node(".").move_to(Vector2(540, 1450))
-		if Input.is_action_pressed("ui_accept"):
-			gameRun = true
