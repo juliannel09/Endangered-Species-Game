@@ -12,7 +12,8 @@ func _ready():
 	
 func _fixed_process(delta):
 	if Globals.get("gameRun_rh")==true:
-		if (Input.is_action_pressed("ui_up")) or (Input.is_action_pressed("ui_down")) or (Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_right")):
+		if (Input.is_action_pressed("ui_up")) or (Input.is_action_pressed("ui_down")) or \
+		    (Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_right")):
 			if (Input.is_action_pressed("ui_up")):
 				if kinSpeed.y > -maxSpeed:
 					kinSpeed += Vector2(0, -accel)
