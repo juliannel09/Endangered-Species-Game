@@ -2,69 +2,76 @@ extends KinematicBody2D
 
 var ground = preload("res://BG_leop_scene/BGleop_root.tscn")
 var createBack = false
+var newBack
 
-var maxSpeed = 300
-var accel = 20
 var kinSpeed = Vector2(0, 0)
-var leopPadX = 200
-var leopPadY = 120
+var canJump = false
+var jumpTimer = 0
 
-var newBack;
-
-const JUMP_FORCE = 1100
-const GRAV = 2000
+const JUMP = -700
+const GRAV = Vector2(0, 1000)
+const leopPadX = 200
+const leopPadY = 120
+const ACCEL = 0.5
+const JUMP_TIME = 0.1
 
 func _ready():
 	set_fixed_process(true)
-	get_node(".").move_to(Vector2(390, 890))
+	newBack = ground.instance()
+	add_child(newBack)
+	newBack.set_owner(self)
+	get_node(".").move_to(Vector2(390, newBack.get_node("ground/ground_mech").get_pos().y - 37))
+	Globals.set("gameRun_leop", true)
 	
 func _fixed_process(delta):
 	if Globals.get("gameRun_leop")==true:
-		if !createBack:
-			newBack = ground.instance()
-			add_child(newBack)
-			newBack.set_owner(self)
-			createBack = true
 		
-		if (Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_right")):
-			if (Input.is_action_pressed("ui_right")):
-				if kinSpeed.x < maxSpeed:
-					kinSpeed += Vector2(accel, 0)
-			if (Input.is_action_pressed("ui_left")):
-				if kinSpeed.x > -maxSpeed:
-					kinSpeed += Vector2(-accel, 0)
+		jumpTimer += delta
+		
+		if((newBack.get_node("ground/ground_mech").get_pos().y - 37)==(get_node(".").get_pos().y + 100)):
+			jumpTimer = 0
+		
+		canJump = jumpTimer < JUMP_TIME
+		
+		if Input.is_action_pressed("ui_jump") and canJump:
+			kinSpeed.y += JUMP
+			jumpTimer = JUMP_TIME
+			
+		kinSpeed += GRAV*delta
+		
+		var movement = 0
+			
+		if (Input.is_action_pressed("ui_right")):
+			movement += 400
+		elif (Input.is_action_pressed("ui_left")):
+			movement -= 400
 		else:
-			kinSpeed.x = lerp(kinSpeed.x, 0, 0.03)
-			kinSpeed.y = lerp(kinSpeed.y, 0, 0.03)
+			movement = 0
 			
-		move(kinSpeed*delta)
 		
-		if Input.is_action_pressed("ui_jump") and get_node(".").is_colliding():
-			kinSpeed.y = - JUMP_FORCE
-			
-		kinSpeed.y += GRAV*delta
+		kinSpeed.x = lerp(kinSpeed.x, movement, ACCEL)
 		
-		if (get_pos().x<leopPadX):
-			kinSpeed.x = 0
-			move_to(Vector2(leopPadX, get_pos().y))
-		if (get_pos().x>(get_viewport().get_rect().size.x) - 2*leopPadX):
-			kinSpeed.x = 0
-			move_to(Vector2(get_viewport().get_rect().size.x - 2*leopPadX, get_pos().y))
-		if (get_pos().y<leopPadY):
-			kinSpeed.y = 0
-			move_to(Vector2(get_pos().x, leopPadY))
-		if (get_pos().y>get_viewport().get_rect().size.y - leopPadY):
-			kinSpeed.y = 0
-			move_to(Vector2(get_pos().x, get_viewport().get_rect().size.y - leopPadY))
+		print(str(kinSpeed))
+		kinSpeed = move(kinSpeed*delta)
+		
+		
+		#if (get_pos().x<leopPadX):
+			#kinSpeed.x = 0
+			#move_to(Vector2(leopPadX, get_pos().y))
+		#if (get_pos().x>(get_viewport().get_rect().size.x) - 2*leopPadX):
+			#kinSpeed.x = 0
+			#move_to(Vector2(get_viewport().get_rect().size.x - 2*leopPadX, get_pos().y))
+		#if (get_pos().y<leopPadY):
+			#kinSpeed.y = 0
+			#move_to(Vector2(get_pos().x, leopPadY))
 			
 		#if get_node(".").is_colliding():
 			#Globals.set("health_leop", Globals.get("health_leop") + get_collider().points)
 			#get_collider().queue_free()
 			
-		if Globals.get("health_leop")<=0:
-			kinSpeed = Vector2(0, 0)
-			Globals.set("gameRun_leop", false)
+		#if Globals.get("health_leop")<=0:
+			#kinSpeed = Vector2(0, 0)
+			#Globals.set("gameRun_leop", false)
 			
 	else:
 		kinSpeed = Vector2(0, 0)
-		get_node(".").move_to(Vector2(470, 890))

@@ -18,7 +18,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 190, 80 )
+extents = Vector2( 240, 100 )
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -35,7 +35,7 @@ animations = [ {
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -7, -10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -9, -10 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -44,14 +44,15 @@ script/script = ExtResource( 1 )
 
 [node name="leopard" type="AnimatedSprite" parent="kinBody2D_leop"]
 
+transform/scale = Vector2( 1.3, 1.3 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 7
+frame = 11
 script/script = ExtResource( 14 )
 
 [node name="collision_leop" type="CollisionShape2D" parent="kinBody2D_leop"]
 
-transform/pos = Vector2( -7, -10 )
+transform/pos = Vector2( -9, -10 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
