@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 970, 37 )
+extents = Vector2( 970, 40 )
 
 [node name="BGleop_root" type="Node"]
 
@@ -92,7 +92,7 @@ centered = false
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 962, 1038 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 962, 1040 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -103,7 +103,7 @@ bounce = 0.0
 
 [node name="ground_mech" type="CollisionShape2D" parent="ground"]
 
-transform/pos = Vector2( 962, 1038 )
+transform/pos = Vector2( 962, 1040 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
