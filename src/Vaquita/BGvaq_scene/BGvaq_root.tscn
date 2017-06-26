@@ -1,9 +1,50 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=30 format=1]
 
 [ext_resource path="res://BGvaq_scene/bg_vaq.gd" type="Script" id=1]
-[ext_resource path="res://BGvaq_scene/l0_sprite_blue1.tex" type="Texture" id=2]
-[ext_resource path="res://BGvaq_scene/l1_sprite_blue1.tex" type="Texture" id=3]
-[ext_resource path="res://BGvaq_scene/l2_sprite_blue1.tex" type="Texture" id=4]
+[ext_resource path="res://BGvaq_scene/sprite_oceanBG.tex" type="Texture" id=2]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?01.png" type="Texture" id=3]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?02.png" type="Texture" id=4]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?03.png" type="Texture" id=5]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?04.png" type="Texture" id=6]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?05.png" type="Texture" id=7]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?06.png" type="Texture" id=8]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?07.png" type="Texture" id=9]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?08.png" type="Texture" id=10]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?09.png" type="Texture" id=11]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?10.png" type="Texture" id=12]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?11.png" type="Texture" id=13]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l4_ocean?12.png" type="Texture" id=14]
+[ext_resource path="res://BGvaq_scene/animatedOcean.gd" type="Script" id=15]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?01.png" type="Texture" id=16]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?02.png" type="Texture" id=17]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?03.png" type="Texture" id=18]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?04.png" type="Texture" id=19]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?05.png" type="Texture" id=20]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?06.png" type="Texture" id=21]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?07.png" type="Texture" id=22]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?08.png" type="Texture" id=23]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?09.png" type="Texture" id=24]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?10.png" type="Texture" id=25]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?11.png" type="Texture" id=26]
+[ext_resource path="res://BGvaq_scene/Simple Ocean 2/l5_ocean?12.png" type="Texture" id=27]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="BGvaq_root" type="Node"]
 
@@ -21,40 +62,43 @@ scroll/limit_end = Vector2( 0, 0 )
 scroll/ignore_camera_zoom = true
 script/script = ExtResource( 1 )
 
-[node name="paraLayer_vaq" type="ParallaxLayer" parent="parallaxBG_vaq"]
+[node name="parLayer_vaq" type="ParallaxLayer" parent="parallaxBG_vaq"]
 
-visibility/blend_mode = 1
 motion/scale = Vector2( 0.2, 1 )
 motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 1920, 0 )
 
-[node name="darkest" type="Sprite" parent="parallaxBG_vaq/paraLayer_vaq"]
+[node name="oceanBG" type="Sprite" parent="parallaxBG_vaq/parLayer_vaq"]
 
 texture = ExtResource( 2 )
 centered = false
 
-[node name="paraLayer_vaq1" type="ParallaxLayer" parent="parallaxBG_vaq"]
+[node name="ocean_l3" type="AnimatedSprite" parent="parallaxBG_vaq/parLayer_vaq"]
 
-visibility/blend_mode = 1
+frames = SubResource( 1 )
+animation = "default"
+centered = false
+script/script = ExtResource( 15 )
+
+[node name="ocean_l4" type="AnimatedSprite" parent="parallaxBG_vaq/parLayer_vaq"]
+
+frames = SubResource( 2 )
+animation = "default"
+centered = false
+script/script = ExtResource( 15 )
+
+[node name="parLayer_vaq3" type="ParallaxLayer" parent="parallaxBG_vaq"]
+
+visibility/visible = false
 motion/scale = Vector2( 0.4, 1 )
 motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 1920, 0 )
 
-[node name="medium" type="Sprite" parent="parallaxBG_vaq/paraLayer_vaq1"]
+[node name="parLayer_vaq4" type="ParallaxLayer" parent="parallaxBG_vaq"]
 
-texture = ExtResource( 3 )
-centered = false
-
-[node name="paraLayer_vaq2" type="ParallaxLayer" parent="parallaxBG_vaq"]
-
-visibility/blend_mode = 1
-motion/scale = Vector2( 0.6, 1 )
+visibility/visible = false
+motion/scale = Vector2( 0.4, 1 )
 motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 1920, 0 )
-
-[node name="lightest" type="Sprite" parent="parallaxBG_vaq/paraLayer_vaq2"]
-
-texture = ExtResource( 4 )
-centered = false
 
 
