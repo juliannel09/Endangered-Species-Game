@@ -1,29 +1,34 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://otherRhinos/otherRhi_move.gd" type="Script" id=1]
-[ext_resource path="res://otherRhinos/sprite_rhino0.tex" type="Texture" id=2]
-[ext_resource path="res://otherRhinos/sprite_rhino1.tex" type="Texture" id=3]
-[ext_resource path="res://otherRhinos/sprite_rhino2.tex" type="Texture" id=4]
-[ext_resource path="res://otherRhinos/sprite_rhino3.tex" type="Texture" id=5]
-[ext_resource path="res://otherRhinos/sprite_rhino4.tex" type="Texture" id=6]
-[ext_resource path="res://otherRhinos/sprite_rhino5.tex" type="Texture" id=7]
-[ext_resource path="res://otherRhinos/sprite_rhino6.tex" type="Texture" id=8]
-[ext_resource path="res://otherRhinos/sprite_rhino7.tex" type="Texture" id=9]
-[ext_resource path="res://otherRhinos/otherRh.gd" type="Script" id=10]
+[ext_resource path="res://Rhino Top View New/sprite_rhino00.png" type="Texture" id=2]
+[ext_resource path="res://Rhino Top View New/sprite_rhino01.png" type="Texture" id=3]
+[ext_resource path="res://Rhino Top View New/sprite_rhino02.png" type="Texture" id=4]
+[ext_resource path="res://Rhino Top View New/sprite_rhino03.png" type="Texture" id=5]
+[ext_resource path="res://Rhino Top View New/sprite_rhino04.png" type="Texture" id=6]
+[ext_resource path="res://Rhino Top View New/sprite_rhino05.png" type="Texture" id=7]
+[ext_resource path="res://Rhino Top View New/sprite_rhino06.png" type="Texture" id=8]
+[ext_resource path="res://Rhino Top View New/sprite_rhino07.png" type="Texture" id=9]
+[ext_resource path="res://Rhino Top View New/sprite_rhino08.png" type="Texture" id=10]
+[ext_resource path="res://Rhino Top View New/sprite_rhino09.png" type="Texture" id=11]
+[ext_resource path="res://Rhino Top View New/sprite_rhino10.png" type="Texture" id=12]
+[ext_resource path="res://Rhino Top View New/sprite_rhino11.png" type="Texture" id=13]
+[ext_resource path="res://Rhino Top View New/sprite_rhino12.png" type="Texture" id=14]
+[ext_resource path="res://otherRhinos/otherRh.gd" type="Script" id=15]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 60.0
-height = 300.0
+radius = 70.0
+height = 320.0
 
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "default",
-"speed": 10.0
+"speed": 5.0
 } ]
 
 [node name="otherRhino_root" type="Node"]
@@ -33,7 +38,7 @@ animations = [ {
 transform/pos = Vector2( 536.814, -411.244 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.303467, 16.919 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 1.3667, 10.2383 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -59,12 +64,13 @@ script/script = ExtResource( 1 )
 transform/scale = Vector2( 0.138532, 0.159113 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 12
 flip_v = true
-script/script = ExtResource( 10 )
+script/script = ExtResource( 15 )
 
 [node name="collisionOtherRhino" type="CollisionShape2D" parent="rigidBody_otherRhino"]
 
-transform/pos = Vector2( -0.303467, 16.919 )
+transform/pos = Vector2( 1.3667, 10.2383 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

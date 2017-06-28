@@ -1,32 +1,33 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://LeopPlayer_scene/kinBody_leop.gd" type="Script" id=1]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard00.tex" type="Texture" id=2]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard01.tex" type="Texture" id=3]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard02.tex" type="Texture" id=4]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard03.tex" type="Texture" id=5]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard04.tex" type="Texture" id=6]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard05.tex" type="Texture" id=7]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard06.tex" type="Texture" id=8]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard07.tex" type="Texture" id=9]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard08.tex" type="Texture" id=10]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard09.tex" type="Texture" id=11]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard10.tex" type="Texture" id=12]
-[ext_resource path="res://LeopPlayer_scene/sprite_leopard11.tex" type="Texture" id=13]
-[ext_resource path="res://LeopPlayer_scene/leopard.gd" type="Script" id=14]
+[ext_resource path="res://LeopPlayer_scene/sprite_00.tex" type="Texture" id=2]
+[ext_resource path="res://LeopPlayer_scene/sprite_01.tex" type="Texture" id=3]
+[ext_resource path="res://LeopPlayer_scene/sprite_02.tex" type="Texture" id=4]
+[ext_resource path="res://LeopPlayer_scene/sprite_03.tex" type="Texture" id=5]
+[ext_resource path="res://LeopPlayer_scene/sprite_04.tex" type="Texture" id=6]
+[ext_resource path="res://LeopPlayer_scene/sprite_05.tex" type="Texture" id=7]
+[ext_resource path="res://LeopPlayer_scene/sprite_06.tex" type="Texture" id=8]
+[ext_resource path="res://LeopPlayer_scene/sprite_07.tex" type="Texture" id=9]
+[ext_resource path="res://LeopPlayer_scene/sprite_08.tex" type="Texture" id=10]
+[ext_resource path="res://LeopPlayer_scene/sprite_09.tex" type="Texture" id=11]
+[ext_resource path="res://LeopPlayer_scene/sprite_10.tex" type="Texture" id=12]
+[ext_resource path="res://LeopPlayer_scene/sprite_11.tex" type="Texture" id=13]
+[ext_resource path="res://LeopPlayer_scene/sprite_12.tex" type="Texture" id=14]
+[ext_resource path="res://LeopPlayer_scene/leopard.gd" type="Script" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 240, 100 )
+extents = Vector2( 250, 90 )
 
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "default",
-"speed": 10.0
+"speed": 5.0
 } ]
 
 [node name="player_leop_root" type="Node"]
@@ -35,7 +36,7 @@ animations = [ {
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -9, -10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 17.9648, -28.0701 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -44,15 +45,14 @@ script/script = ExtResource( 1 )
 
 [node name="leopard" type="AnimatedSprite" parent="kinBody2D_leop"]
 
-transform/scale = Vector2( 1.3, 1.3 )
+transform/scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 11
-script/script = ExtResource( 14 )
+script/script = ExtResource( 15 )
 
 [node name="collision_leop" type="CollisionShape2D" parent="kinBody2D_leop"]
 
-transform/pos = Vector2( -9, -10 )
+transform/pos = Vector2( 17.9648, -28.0701 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

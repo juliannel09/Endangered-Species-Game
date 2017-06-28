@@ -7,7 +7,7 @@ func _ready():
 	
 func _process(delta):
 	timeElapsed += delta
-	if(timeElapsed > 0.001):
+	if(timeElapsed > 1.2):
 		if(get_frame() == self.get_sprite_frames().get_frame_count("default") - 1):
 			set_frame(0)
 		else:
