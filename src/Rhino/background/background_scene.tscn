@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=1]
 
 [ext_resource path="res://background/bg.gd" type="Script" id=1]
-[ext_resource path="res://background/New Piskel (3).tex" type="Texture" id=2]
+[ext_resource path="res://background/Rhino background.png" type="Texture" id=2]
 [ext_resource path="res://background/kinBody2D_rhino.gd" type="Script" id=3]
 [ext_resource path="res://Rhino Top View New/sprite_rhino00.png" type="Texture" id=4]
 [ext_resource path="res://Rhino Top View New/sprite_rhino01.png" type="Texture" id=5]
@@ -59,7 +59,7 @@ motion/mirroring = Vector2( 0, 1920 )
 [node name="grassland" type="Sprite" parent="parallaxBG_rh/parallaxLayer_rh"]
 
 transform/pos = Vector2( 1.47412, 0.00012207 )
-transform/scale = Vector2( 0.997777, 1.00601 )
+transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 centered = false
 region_rect = Rect2( 540, 960, 0, 0 )

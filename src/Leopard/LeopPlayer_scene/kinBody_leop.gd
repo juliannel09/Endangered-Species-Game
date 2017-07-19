@@ -54,9 +54,12 @@ func _fixed_process(delta):
 		if is_colliding():
 			# check if the collision is with the FLOOR!
 			var collider = get_collider()
+			if collider != newBack.get_node("ground"):
+				print(str(collider))
 #			if collider == checkNet.get_node("RigidBody2D"):
 #				Globals.set("gameLevel", false)
-			if Input.is_action_pressed("ui_jump") and collider == newBack.get_node("ground"):
+			if Input.is_action_pressed("ui_jump") \
+				and (collider == newBack.get_node("ground")) :#or (collider == newBack.get_node("Obstacles_Root").get_node())):
 				#if collider==newBack.get_node("ground"):
 					kinSpeed.y = JUMP
 					motion = kinSpeed*delta
