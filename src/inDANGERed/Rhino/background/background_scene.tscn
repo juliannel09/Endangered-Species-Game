@@ -1,0 +1,92 @@
+[gd_scene load_steps=20 format=1]
+
+[ext_resource path="res://Rhino/background/bg.gd" type="Script" id=1]
+[ext_resource path="res://Rhino/background/Rhino background.png" type="Texture" id=2]
+[ext_resource path="res://Rhino/background/kinBody2D_rhino.gd" type="Script" id=3]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino00.png" type="Texture" id=4]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino01.png" type="Texture" id=5]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino02.png" type="Texture" id=6]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino03.png" type="Texture" id=7]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino04.png" type="Texture" id=8]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino05.png" type="Texture" id=9]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino06.png" type="Texture" id=10]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino07.png" type="Texture" id=11]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino08.png" type="Texture" id=12]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino09.png" type="Texture" id=13]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino10.png" type="Texture" id=14]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino11.png" type="Texture" id=15]
+[ext_resource path="res://Rhino/background/Rhino Top w Outline/sprite_rhino12.png" type="Texture" id=16]
+[ext_resource path="res://Rhino/background/animated_rhino.gd" type="Script" id=17]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 65.0
+height = 330.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="playerRhino_root" type="Node"]
+
+[node name="parallaxBG_rh" type="ParallaxBackground" parent="."]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+script/script = ExtResource( 1 )
+
+[node name="parallaxLayer_rh" type="ParallaxLayer" parent="parallaxBG_rh"]
+
+visibility/blend_mode = 1
+motion/scale = Vector2( 1, 0.5 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 1920 )
+
+[node name="grassland" type="Sprite" parent="parallaxBG_rh/parallaxLayer_rh"]
+
+transform/pos = Vector2( 1.47412, 0.00012207 )
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+centered = false
+region_rect = Rect2( 540, 960, 0, 0 )
+
+[node name="kinBody2D_rhino" type="KinematicBody2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 3 )
+
+[node name="rhino" type="AnimatedSprite" parent="kinBody2D_rhino"]
+
+transform/scale = Vector2( 1.1, 1.2 )
+frames = SubResource( 2 )
+animation = "default"
+frame = 12
+script/script = ExtResource( 17 )
+
+[node name="collision_rhino" type="CollisionShape2D" parent="kinBody2D_rhino"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+

@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://Vaquita/Prey/Fish_1/Fish_1_Root.gd" type="Script" id=1]
+[ext_resource path="res://Vaquita/Prey/Fish_1/sprite_fish000.png" type="Texture" id=2]
+[ext_resource path="res://Vaquita/Prey/Fish_1/sprite_fish001.png" type="Texture" id=3]
+[ext_resource path="res://Vaquita/Prey/Fish_1/sprite_fish002.png" type="Texture" id=4]
+[ext_resource path="res://Vaquita/Prey/Fish_1/sprite_fish003.png" type="Texture" id=5]
+[ext_resource path="res://Vaquita/Prey/Fish_1/Fish_1_animation.gd" type="Script" id=6]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 42.2375
+height = 161.799
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Fish_1_Root" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Fish_1_Area2D" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, -1.80499, -17.1476 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Fish_1_Area2D"]
+
+frames = SubResource( 1 )
+animation = "default"
+script/script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fish_1_Area2D"]
+
+transform/pos = Vector2( -1.80499, -17.1476 )
+transform/rot = 90.0
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+

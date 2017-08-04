@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Leopard/LeopMain/leopMain_root.gd" type="Script" id=1]
+[ext_resource path="res://Leopard/LeopPlayer_scene/player_leop_root.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Leopard/Obstacles/Obstacles_Root.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Leopard/HUD/HUD_Root.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Leopard/Practice/Popup_Practice.tscn" type="PackedScene" id=5]
+
+[node name="leopMain_root" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="player_leop_root" parent="." instance=ExtResource( 2 )]
+
+editor/display_folded = true
+
+[node name="kinBody2D_leop" parent="player_leop_root"]
+
+editor/display_folded = true
+
+[node name="Obstacles_Root" parent="." instance=ExtResource( 3 )]
+
+[node name="HUD_Root" parent="." instance=ExtResource( 4 )]
+
+editor/display_folded = true
+
+[node name="Label_Health" parent="HUD_Root"]
+
+editor/display_folded = true
+
+[node name="Node" parent="." instance=ExtResource( 5 )]
+
+[node name="PopupPanel" parent="Node"]
+
+editor/display_folded = true
+
+
+[editable path="player_leop_root"]
+[editable path="Obstacles_Root"]
+[editable path="HUD_Root"]
+[editable path="Node"]
