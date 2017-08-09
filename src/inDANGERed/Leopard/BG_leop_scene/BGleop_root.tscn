@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://Leopard/BG_leop_scene/bg_leop.gd" type="Script" id=1]
+[ext_resource path="res://Leopard/BG_leop_scene/l0_sprite_background1.tex" type="Texture" id=2]
+[ext_resource path="res://Leopard/BG_leop_scene/l1_sprite_background1.tex" type="Texture" id=3]
+[ext_resource path="res://Leopard/BG_leop_scene/l2_sprite_background1.tex" type="Texture" id=4]
+[ext_resource path="res://Leopard/BG_leop_scene/l3_sprite_background1.tex" type="Texture" id=5]
+[ext_resource path="res://Leopard/BG_leop_scene/l4_sprite_background1.tex" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 970, 40 )
+
+[node name="BGleop_root" type="Node"]
+
+[node name="parallaxBG_leop" type="ParallaxBackground" parent="."]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+script/script = ExtResource( 1 )
+
+[node name="paraLayer_leop" type="ParallaxLayer" parent="parallaxBG_leop"]
+
+motion/scale = Vector2( 0.2, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 1920, 0 )
+
+[node name="back_color" type="Sprite" parent="parallaxBG_leop/paraLayer_leop"]
+
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="paraLayer_leop1" type="ParallaxLayer" parent="parallaxBG_leop"]
+
+motion/scale = Vector2( 0.4, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 1920, 0 )
+
+[node name="birch_trees" type="Sprite" parent="parallaxBG_leop/paraLayer_leop1"]
+
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="paraLayer_leop2" type="ParallaxLayer" parent="parallaxBG_leop"]
+
+motion/scale = Vector2( 0.6, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 1920, 0 )
+
+[node name="back_bush" type="Sprite" parent="parallaxBG_leop/paraLayer_leop2"]
+
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="paraLayer_leop3" type="ParallaxLayer" parent="parallaxBG_leop"]
+
+motion/scale = Vector2( 0.8, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 1920, 0 )
+
+[node name="front_trees" type="Sprite" parent="parallaxBG_leop/paraLayer_leop3"]
+
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="paraLayer_leop4" type="ParallaxLayer" parent="parallaxBG_leop"]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 1920, 0 )
+
+[node name="front_bush-grass" type="Sprite" parent="parallaxBG_leop/paraLayer_leop4"]
+
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="ground" type="StaticBody2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 962, 1040 )
+shapes/0/trigger = false
+collision/layers = 2
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="ground_mech" type="CollisionShape2D" parent="ground"]
+
+transform/pos = Vector2( 962, 1040 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+
