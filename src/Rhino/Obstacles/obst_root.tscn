@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=1]
 
-[ext_resource path="res://otherRhinos/other_rh.gd" type="Script" id=1]
+[ext_resource path="res://Obstacles/obst_root.gd" type="Script" id=1]
 
-[node name="other_rh" type="Node"]
+[node name="obst_root" type="Node"]
 
 script/script = ExtResource( 1 )
 

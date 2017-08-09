@@ -3,26 +3,26 @@
 [ext_resource path="res://background/bg.gd" type="Script" id=1]
 [ext_resource path="res://background/Rhino background.png" type="Texture" id=2]
 [ext_resource path="res://background/kinBody2D_rhino.gd" type="Script" id=3]
-[ext_resource path="res://Rhino Top View New/sprite_rhino00.png" type="Texture" id=4]
-[ext_resource path="res://Rhino Top View New/sprite_rhino01.png" type="Texture" id=5]
-[ext_resource path="res://Rhino Top View New/sprite_rhino02.png" type="Texture" id=6]
-[ext_resource path="res://Rhino Top View New/sprite_rhino03.png" type="Texture" id=7]
-[ext_resource path="res://Rhino Top View New/sprite_rhino04.png" type="Texture" id=8]
-[ext_resource path="res://Rhino Top View New/sprite_rhino05.png" type="Texture" id=9]
-[ext_resource path="res://Rhino Top View New/sprite_rhino06.png" type="Texture" id=10]
-[ext_resource path="res://Rhino Top View New/sprite_rhino07.png" type="Texture" id=11]
-[ext_resource path="res://Rhino Top View New/sprite_rhino08.png" type="Texture" id=12]
-[ext_resource path="res://Rhino Top View New/sprite_rhino09.png" type="Texture" id=13]
-[ext_resource path="res://Rhino Top View New/sprite_rhino10.png" type="Texture" id=14]
-[ext_resource path="res://Rhino Top View New/sprite_rhino11.png" type="Texture" id=15]
-[ext_resource path="res://Rhino Top View New/sprite_rhino12.png" type="Texture" id=16]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino00.png" type="Texture" id=4]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino01.png" type="Texture" id=5]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino02.png" type="Texture" id=6]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino03.png" type="Texture" id=7]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino04.png" type="Texture" id=8]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino05.png" type="Texture" id=9]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino06.png" type="Texture" id=10]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino07.png" type="Texture" id=11]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino08.png" type="Texture" id=12]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino09.png" type="Texture" id=13]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino10.png" type="Texture" id=14]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino11.png" type="Texture" id=15]
+[ext_resource path="res://background/Rhino Top w Outline/sprite_rhino12.png" type="Texture" id=16]
 [ext_resource path="res://background/animated_rhino.gd" type="Script" id=17]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 70.0
-height = 420.0
+radius = 65.0
+height = 330.0
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -77,7 +77,7 @@ script/script = ExtResource( 3 )
 
 [node name="rhino" type="AnimatedSprite" parent="kinBody2D_rhino"]
 
-transform/scale = Vector2( 0.143519, 0.188413 )
+transform/scale = Vector2( 1.1, 1.2 )
 frames = SubResource( 2 )
 animation = "default"
 frame = 12
